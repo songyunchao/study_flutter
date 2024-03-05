@@ -25,7 +25,7 @@ void main(){
 class TitleSection extends StatelessWidget {
   const TitleSection({super.key, required this.name, required this.location});
 
-  final String name;
+  final String name ;
   final String location;
 
   @override
