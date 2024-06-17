@@ -1,14 +1,15 @@
+import 'package:study_flutter/http/core/dio_adapter.dart';
 import 'package:study_flutter/http/core/hi_error.dart';
 import 'package:study_flutter/http/core/hi_net_adapter.dart';
 import 'package:study_flutter/http/request/base_request.dart';
+
+import 'mock_adapter.dart';
 
 class HiNet {
   HiNet._();
   static  HiNet  _instance =HiNet._();
   static HiNet getInstance(){
-    if(_instance == null){
-      _instance = HiNet._();
-    }
+    _instance ??= HiNet._();
     return _instance;
   }
 
@@ -45,13 +46,21 @@ class HiNet {
   }
 
   Future<dynamic>_send<T>(BaseRequest requset) async{
-    _printLog('url:${requset.url()}');
-    _printLog('method:${requset.httpMethod()}');
-    requset.addHeader("token","123");
-    _printLog('header:${requset.header}');
-    return Future.value({"statusCode":200,"data":{
-      "code":0,"message":"success"
-    }});
+    // _printLog('url:${requset.url()}');
+    // _printLog('method:${requset.httpMethod()}');
+    // requset.addHeader("token","123");
+    // _printLog('header:${requset.header}');
+    // return Future.value({"statusCode":200,"data":{
+    //   "code":0,"message":"success"
+    // }});
+
+    //使用mock 发送请求
+    // HiNetAdapter adapter = MockAdapter();
+    // return await adapter.send(requset);
+
+    //使用dio 发送请求
+    HiNetAdapter adapter = DioAdapter();
+    return await adapter.send(requset);
   }
   void _printLog(String log) {
     print('hi_net: $log');

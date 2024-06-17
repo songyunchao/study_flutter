@@ -9,7 +9,7 @@ abstract class BaseRequest{
   String authority(){
     return "api.devio.org";
   }
- HttpMethod httpMethod();
+  HttpMethod httpMethod();
   String  path();
   String url(){
     Uri uri;
