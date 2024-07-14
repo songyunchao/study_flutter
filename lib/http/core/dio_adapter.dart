@@ -24,13 +24,13 @@ class DioAdapter extends HiNetAdapter{
        error = e;
      }
       if(error != null){
-        throw HiNetError(response?.statusCode??-1, error.toString(),data: builRes(response,request));
+        throw HiNetError(response?.statusCode??-1, error.toString(),data: builRes<T>(response,request));
       }
-      return builRes(response, request) as Future<HiNetResponse<T>>;
+      return builRes<T>(response, request)  ;
 
   }
   // 构建HiNetResponse
-  HiNetResponse builRes(Response response, BaseRequest request) {
+  HiNetResponse<T> builRes<T>(Response response, BaseRequest request) {
     return HiNetResponse(
       data: response.data,
       request: request,
@@ -38,6 +38,7 @@ class DioAdapter extends HiNetAdapter{
       statusMessage: response.statusMessage,
       extra: response
     );
-
   }
+
+
   }
