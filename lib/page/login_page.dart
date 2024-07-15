@@ -9,7 +9,10 @@ import 'package:study_flutter/widget/login_effect.dart';
 import 'package:study_flutter/widget/login_input.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.onJumpToRegistration, required this.onSuccess, });
+
+  final VoidCallback onJumpToRegistration;
+  final VoidCallback onSuccess;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -24,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar('密码登录', '注册', () { }),
+      appBar: appBar('密码登录', '注册', widget.onJumpToRegistration),
       body: Container(
         child: ListView(
           children: [
@@ -81,6 +84,9 @@ class _LoginPageState extends State<LoginPage> {
       if(result['code'] == 0){
         print('登录成功');
         showToast('登录成功');
+        if(widget.onSuccess != null){
+          widget.onSuccess();
+        }
       }else{
         print(result['msg']);
         showWarningToast(result['msg']);
