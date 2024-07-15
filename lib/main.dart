@@ -19,6 +19,7 @@ void main() {
         useMaterial3: true,
       ),
       home: const BottomNavigator(),
+      // home: LoginPage(onJumpToRegistration: () {  }, onSuccess: () {  },),
     )
   );
 }
@@ -88,7 +89,7 @@ class BiliRouterDelegate extends RouterDelegate<BiliRoutePath>
         onJumpToDetail: (VideoModel value) {
         this.videoModel = value;
         notifyListeners();
-      },)),
+      }, onJumpTo: (int value) {  },)),
       if(videoModel != null) pageWrap(VideoDetailPage(videoModel: videoModel))
     ];
 

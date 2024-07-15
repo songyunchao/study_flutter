@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:study_flutter/http/core/hi_error.dart';
 import 'package:study_flutter/http/dao/login_dao.dart';
 import 'package:study_flutter/util/string_util.dart';
-import 'package:study_flutter/util/toast.dart';
 import 'package:study_flutter/widget/appbar.dart';
 import 'package:study_flutter/widget/login_button.dart';
 import 'package:study_flutter/widget/login_effect.dart';
@@ -83,24 +82,24 @@ class _LoginPageState extends State<LoginPage> {
       print("登录结果: $result");
       if(result['code'] == 0){
         print('登录成功');
-        showToast('登录成功');
+        // showToast('登录成功');
         if(widget.onSuccess != null){
           widget.onSuccess();
         }
       }else{
         print(result['msg']);
-        showWarningToast(result['msg']);
+        // showWarningToast(result['msg']);
       }
     }on NeedAuth catch(e){
       print('需要登录');
       print(e);
-      showWarningToast(e.message);
+      // showWarningToast(e.message);
     }on NeedLogin catch(e){
       print(e);
-      showWarningToast(e.message);
+      // showWarningToast(e.message);
     }on HiNetError catch(e){
       print(e);
-      showWarningToast(e.message);
+      // showWarningToast(e.message);
     }
 
   }

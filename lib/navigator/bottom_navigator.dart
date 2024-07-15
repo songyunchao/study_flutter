@@ -24,14 +24,10 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     return Scaffold(
       body: PageView(
         controller: _controller,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onPageChanged:(index)=> _onJumpTo(index),
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          HomePage(onJumpToDetail: (VideoModel value) {},),
+          HomePage(onJumpToDetail: (VideoModel value) {}, onJumpTo: (int index)=>_onJumpTo(index),),
           const RankingPage(),
           const FavoritePage(),
           const ProfilePage(),
@@ -41,18 +37,19 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        onTap: (index) {
-          _controller.jumpToPage(index);
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: (index)=>_onJumpTo(index),
+        // onTap: (index) {
+        //   _controller.jumpToPage(index);
+        //   setState(() {
+        //     _currentIndex = index;
+        //   });
+        // },
         type: BottomNavigationBarType.fixed,
         items: [
           _buildBottomNavigationBarItem('首页', Icons.home, 0),
-          _buildBottomNavigationBarItem('排行', Icons.local_fire_department, 0),
-          _buildBottomNavigationBarItem('收藏', Icons.favorite, 0),
-          _buildBottomNavigationBarItem('我的', Icons.live_tv, 0),
+          _buildBottomNavigationBarItem('排行', Icons.local_fire_department, 1),
+          _buildBottomNavigationBarItem('收藏', Icons.favorite, 2),
+          _buildBottomNavigationBarItem('我的', Icons.live_tv, 3),
         ]
       ),
     );
@@ -70,5 +67,12 @@ class _BottomNavigatorState extends State<BottomNavigator> {
           ),
           label: title,
         );
+  }
+
+  _onJumpTo(int index) {
+    _controller.jumpToPage(index);
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
