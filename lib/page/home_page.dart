@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
           Container(
             color: Colors.white,
-            padding: EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.only(top: 10),
             child: _tabBar(),
           ),
           Flexible(child: TabBarView(
@@ -56,16 +56,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   _tabBar() {
-    return TabBar(
-      controller: _controller,
-      isScrollable: true,
-      labelColor: Colors.black,
-
-      tabs: tabs.map((tab) {
-        return Tab(
-          child: Text(tab,style: TextStyle(fontSize: 16),),
-        );
-      }).toList(),
+    return Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: TabBar(
+        controller: _controller,
+        isScrollable: true,
+        labelColor: Colors.black,
+        labelPadding: EdgeInsets.only(left: 5.0, right: 5.0),
+        indicatorPadding: EdgeInsets.only(left: 5.0, right: 5.0),
+        tabs: tabs.map((tab) {
+          return Tab(
+            child:Padding(
+              padding: EdgeInsets.only(left: 5,right: 5),
+              child: Text(tab,style: TextStyle(fontSize: 16),),
+            )
+          );
+        }).toList(),
+      ),
     );
   }
 
