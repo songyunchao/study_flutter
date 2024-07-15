@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter/model/video_model.dart';
 import 'package:study_flutter/page/home_tab_page.dart';
+import 'package:study_flutter/widget/custom_button.dart';
 import 'package:study_flutter/widget/custom_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,7 +50,110 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: HomeTabPage(name: tab),
               );
             }).toList(),
-          ))
+          )),
+         Row(
+           children: [
+             CustomButton(
+               minWidth: 100,
+               height: 100,
+               onPressed: () {
+                 print('测试按钮') ;
+               }, label: '按钮',
+               child: Container(
+                 child: const Column(
+                   children: [
+                     Icon(
+                       Icons.person,
+                       size: 30,
+                     ),
+                     SizedBox(height: 10,),
+                     Text('人员信息')
+                   ],
+                 ),
+               ),
+             ),
+             CustomButton(
+               minWidth: 100,
+               height: 100,
+               onPressed: () {
+                 print('测试按钮') ;
+               }, label: '按钮',
+               child: Container(
+                 child: const Column(
+                   children: [
+                     Icon(
+                       Icons.person,
+                       size: 30,
+                     ),
+                     SizedBox(height: 10,),
+                     Text('人员信息')
+                   ],
+                 ),
+               ),
+             ),
+           ],
+         ),
+          Row(
+            children: [
+              CustomButton(
+                minWidth: 100,
+                height: 100,
+                onPressed: () {
+                  print('测试按钮') ;
+                }, label: '按钮',
+                child: Container(
+                  child: const Column(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 30,
+                      ),
+                      SizedBox(height: 10,),
+                      Text('人员信息')
+                    ],
+                  ),
+                ),
+              ),
+              CustomButton(
+                minWidth: 100,
+                height: 100,
+                onPressed: () {
+                  print('测试按钮') ;
+                }, label: '按钮',
+                child: Container(
+                  child: const Column(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 30,
+                      ),
+                      SizedBox(height: 10,),
+                      Text('人员信息')
+                    ],
+                  ),
+                ),
+              ),
+              CustomButton(
+                minWidth: 100,
+                height: 100,
+                onPressed: () {
+                  print('测试按钮') ;
+                }, label: '按钮',
+                child: Container(
+                  child: const Column(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 30,
+                      ),
+                      SizedBox(height: 10,),
+                      Text('人员信息')
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
         ]
       )
     );
