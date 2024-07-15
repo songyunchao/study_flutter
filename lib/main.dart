@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:study_flutter/model/video_model.dart';
+import 'package:study_flutter/navigator/bottom_navigator.dart';
 import 'package:study_flutter/page/home_page.dart';
 import 'package:study_flutter/page/login_page.dart';
 import 'package:study_flutter/page/registration_page.dart';
@@ -9,7 +10,17 @@ import 'package:study_flutter/page/vide_detail_page.dart';
 import 'package:study_flutter/util/color.dart';
 
 void main() {
-  runApp(const BiliApp());
+  // runApp(const BottomNavigator());
+  runApp(
+    MaterialApp(
+      theme: ThemeData(
+        primarySwatch: white,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const BottomNavigator(),
+    )
+  );
 }
 
 // class MyApp extends StatelessWidget {
