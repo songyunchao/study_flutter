@@ -32,9 +32,11 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           HomePage(onJumpToDetail: (VideoModel value) {},),
-          const ProfilePage(),
-          const FavoritePage(),
           const RankingPage(),
+          const FavoritePage(),
+          const ProfilePage(),
+
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
